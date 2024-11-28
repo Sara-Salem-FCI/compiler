@@ -1,0 +1,75 @@
+Program -> "begin" "{" StatementList "}" "end"
+
+StatementList -> Statement*
+
+Statement -> Assignment 
+          | Conditional 
+          | PrintStatement 
+          | Pass 
+          | Return 
+          | LoopControl 
+          | While 
+          | For
+
+Assignment -> "int" Identifier "=" NUMBER ";" 
+            | Identifier "=" Expression ";" 
+            | Identifier CompoundOperator Expression ";"
+
+Conditional -> "if" "(" BooleanExpression ")" "{" StatementList "}" 
+             ["elif" "(" BooleanExpression ")" "{" StatementList "}"]* 
+             ["else" "{" StatementList "}"]
+
+BooleanExpression -> Expression RelationalOperator Expression 
+                  | BooleanExpression "and" BooleanExpression 
+                  | BooleanExpression "or" BooleanExpression 
+                  | "not" BooleanExpression
+
+PrintStatement -> "print" "(" Identifier ")" ";"
+
+While -> "while" "(" BooleanExpression ")" "{" StatementList "}"
+
+For -> "for" TargetList "in" ExpressionList "{" StatementList "}"
+
+Pass -> "pass" ";" 
+      | "noop" ";"
+
+Return -> "return" [ExpressionList] ";"
+
+LoopControl -> "break" ";" 
+            | "continue" ";"
+
+Expression -> Term (Operator Term)*
+
+Term -> Identifier 
+     | Literal 
+     | "(" Expression ")"
+
+Literal -> NUMBER 
+        | STRING
+
+Operator -> "+" 
+         | "-" 
+         | "*" 
+         | "/" 
+         | "%" 
+         | "==" 
+         | "!=" 
+         | "<" 
+         | ">" 
+         | "<=" 
+         | ">=" 
+         | "="
+
+RelationalOperator -> "==" | "!=" | "<" | ">" | "<=" | ">="
+
+Identifier -> [A-Za-z] [A-Za-z0-9]*
+
+NUMBER -> [0-9]+
+
+STRING -> '"' [A-Za-z0-9 ]* '"'
+
+CompoundOperator -> "+=" | "-=" | "*=" | "/=" | "%="
+
+TargetList -> Identifier ("," Identifier)*
+
+ExpressionList -> Expression ("," Expression)*

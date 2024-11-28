@@ -1,0 +1,22 @@
+tokens                  Lexeme Examples                 descreption
+KEYWORD                 begin, end                 Keywords marking the start and end of a program.
+KEYWORD                 int, float, void, string, char   Data type specifiers.
+KEYWORD                 if, elif, else             Conditional branching constructs.
+KEYWORD                 for, while                 Loop constructs.
+KEYWORD                 return                     Function return statement.
+KEYWORD                 pass                       Do-nothing statements.
+KEYWORD                 print                      Output statement.
+KEYWORD                 break, continue            Loop control keywords.
+KEYWORD                 True, false                Boolean Expression.
+comment                 #                          Single line comment
+IDENTIFIER              a, x, myVar                Names defined by the user, starting with a letter.
+OPERATOR                +, -, *, /, %              Arithmetic operators.
+OPERATOR                =                          Assignment Operator.
+RELATIONAL_OPERATOR     ==, !=, <, >               Relational operators for comparisons.
+COMPOUND_OPERATOR       +=, -=, *=                 Compound assignment operators.
+NUMBER                  0, 123, 42.5               Integer or floating-point literals.
+STRING                  "hello", "world"           String literals enclosed in double quotes.
+BOOLEAN                  true, false               Boolean literals.
+SYMBOL                  {, }, ;                    Block delimiters and statement terminators.
+PARENTHESIS             (, )                       Parentheses for grouping or function calls.
+COMMA                   ,                          Comma for separating arguments or list items.
