@@ -1,2 +1,6 @@
-x = 5
-print(x)
+begin {
+    int x = 10;
+    if (x > 5) {
+        print(x);
+    }
+} end
