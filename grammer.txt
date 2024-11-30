@@ -11,8 +11,13 @@ Statement -> Assignment
           | While 
           | For
 
-Assignment -> "int" Identifier "=" NUMBER ";" 
+Declaration -> "keyword" Identifier ;
+             | "keyword" Identifier "=" value ";"
+             | "keyword" Identifier "=" Identifier ";"
+
+Assignment -> Identifier "=" NUMBER ";" 
             | Identifier "=" Expression ";" 
+            | Identifier "=" Identifier ";"
             | Identifier CompoundOperator Expression ";"
 
 Conditional -> "if" "(" BooleanExpression ")" "{" StatementList "}" 
@@ -25,10 +30,11 @@ BooleanExpression -> Expression RelationalOperator Expression
                   | "not" BooleanExpression
 
 PrintStatement -> "print" "(" Identifier ")" ";"
+                | "print" "(" String ")" ";"
 
 While -> "while" "(" BooleanExpression ")" "{" StatementList "}"
 
-For -> "for" TargetList "in" ExpressionList "{" StatementList "}"
+For -> "for" Identifier "in" TargetList "{" StatementList "}"
 
 Pass -> "pass" ";" 
       | "noop" ";"
@@ -72,4 +78,6 @@ CompoundOperator -> "+=" | "-=" | "*=" | "/=" | "%="
 
 TargetList -> Identifier ("," Identifier)*
 
-ExpressionList -> Expression ("," Expression)*
+ExpressionList -> "[" value ("," value)* "]"
+
+value -> NUMBER | STRING

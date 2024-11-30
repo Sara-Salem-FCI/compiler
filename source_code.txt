@@ -1,3 +1,13 @@
-begin{
-   x = 5;
+begin {
+    int sum = 0;
+    sum = 7;
+    for i in [1, 2, 3, 4, 5] {
+        sum += i;
+        print(sum);
+    }
+    if (sum > 10) {
+        print("Sum is greater than 10");
+    } else {
+        print("Sum is not greater than 10");
+    }
 }end
