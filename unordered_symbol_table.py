@@ -22,15 +22,14 @@ def generate_symbol_table(code):
         'char': 1,
         'int': 2,
         'float': 4,
-        'double': 8,
         'string': 0  # We'll calculate the string size dynamically
     }
 
     # Regular expressions
-    array_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|double|char|string)\s+(?P<variable_name>\w+)\[(?P<size>\d+)\]\s*=\s*\{.*?\};")
-    regular_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|double|char|string)\s+(?P<variable_name>\w+)\s*=\s*(?P<value>.*?);")
-    simple_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|double|char|string)\s+(?P<variable_name>\w+)\s*;")
-    loop_variable_pattern = re.compile(r"for\s*\(\s*(?P<data_type>int|float|double|char|string)\s+(?P<variable_name>\w+)\s*=")  # Updated to match the loop variable
+    array_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|char|string)\s+(?P<variable_name>\w+)\[(?P<size>\d+)\]\s*=\s*\{.*?\};")
+    regular_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|char|string)\s+(?P<variable_name>\w+)\s*=\s*(?P<value>.*?);")
+    simple_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|char|string)\s+(?P<variable_name>\w+)\s*;")
+    loop_variable_pattern = re.compile(r"for\s*\(\s*(?P<data_type>int|float|char|string)\s+(?P<variable_name>\w+)\s*=")  # Updated to match the loop variable
 
     for line in code.splitlines():
         # Check for array declarations
