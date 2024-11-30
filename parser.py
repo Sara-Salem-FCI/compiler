@@ -40,7 +40,7 @@ class Parser:
     def parse_statement(self):
         token = self.current_token()
         if token[0] == 'KEYWORD':
-            if token[1] in ['int', 'float', 'char', 'string']:
+            if token[1] in ['int', 'float', 'char', 'string', 'double']:
                 return self.parse_declaration()
             elif token[1] == 'if':
                 return self.parse_conditional()

@@ -32,7 +32,7 @@ def is_identifier(string):
     return all(char.isalnum() for char in string)
 
 # List of Python keywords
-KEYWORDS = {'if', 'print', 'in', 'else', 'for', 'while', 'return', 'int', 'float', 
+KEYWORDS = {'if', 'print', 'in', 'else', 'for', 'while', 'return', 'int', 'float', 'double'
             'range', 'string', 'char', 'elif', 'pass', 'break', 'continue', 'True', 
             'False', 'and', 'or', 'not', 'begin', 'end'}  # Added 'begin' and 'end'
 

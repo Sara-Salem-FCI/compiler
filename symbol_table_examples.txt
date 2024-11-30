@@ -1,4 +1,26 @@
 sample_code = """
+begin{
+
+    int sum =0;
+    int counter = 0;
+    while (counter < 3) {
+        print(counter);
+        counter += 1;
+    }
+
+    if (sum > 10) {
+        print("Sum is greater than 10!");
+    } else {
+        print("Sum is less than or equal to 10.");
+    }
+
+    return initial;
+}end
+"""
+
+----------------------------------------------------------------------
+
+sample_code = """
 begin
 {
     string message = "Hello, ";
