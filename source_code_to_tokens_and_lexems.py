@@ -32,8 +32,8 @@ def is_identifier(string):
     return all(char.isalnum() for char in string)
 
 # List of Python keywords
-KEYWORDS = {'if', 'print', 'in', 'else', 'for', 'while', 'return', 'int', 'float', 
-            'range', 'string', 'char', 'elif', 'pass', 'break', 'continue', 'True', 
+KEYWORDS = {'if', 'print', 'in', 'else', 'for', 'while', 'return', 'int', 'float',
+            'range', 'string', 'elif', 'pass', 'break', 'continue', 'True', 
             'False', 'and', 'or', 'not', 'begin', 'end'}  # Added 'begin' and 'end'
 
 # Function to check if a string is a keyword
@@ -126,10 +126,7 @@ def lex(source_code):
                 i += 1
             if i < len(source_code):
                 string_value += source_code[i]  # Add the closing quote
-            if len(string_value) == 3:
-                tokens.append(('CHAR', string_value))    
-            else: 
-                tokens.append(('STRING', string_value))
+            tokens.append(('STRING', string_value))
             i += 1
             continue
 

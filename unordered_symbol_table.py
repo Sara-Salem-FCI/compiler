@@ -1,45 +1,14 @@
 
 import re
 
-# Sample code for symbol table generation
-sample_code = """
-{
-    int num[5]={1,2,3,4,5};
-    char numbers[5] = {a,b,c,d,e};
-    int sum = 0;
-    double average = 0.0;
-    float av2 = 5.0025;
-    string greeting = "Hello";
-    string target = "World!";
-    char initial = 'W';
+def read_source_code(file_path):
+    with open(file_path, 'r') as file:
+        return file.read()
 
-    greeting += " " + target;
+# Main execution
 
-    for (int i = 0; i < 5; i++) {
-        sum += numbers[i];
-    }
-
-    average = sum / 5.0;
-
-    print(greeting);
-    print(sum);
-    print(average);
-
-    int counter = 0;
-    while (counter < 3) {
-        print(counter);
-        counter += 1;
-    }
-
-    if (sum > 10) {
-        print("Sum is greater than 10!");
-    } else {
-        print("Sum is less than or equal to 10.");
-    }
-
-    return initial;
-}
-"""
+source_file_path = 'source_code.txt'  # Specify the path to your file
+source_code = read_source_code(source_file_path)
 
 # Symbol table generator
 def generate_symbol_table(code):
@@ -53,15 +22,14 @@ def generate_symbol_table(code):
         'char': 1,
         'int': 2,
         'float': 4,
-        'double': 8,
         'string': 0  # We'll calculate the string size dynamically
     }
 
     # Regular expressions
-    array_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|double|char|string)\s+(?P<variable_name>\w+)\[(?P<size>\d+)\]\s*=\s*\{.*?\};")
-    regular_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|double|char|string)\s+(?P<variable_name>\w+)\s*=\s*(?P<value>.*?);")
-    simple_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|double|char|string)\s+(?P<variable_name>\w+)\s*;")
-    loop_variable_pattern = re.compile(r"for\s*\(\s*(?P<data_type>int|float|double|char|string)\s+(?P<variable_name>\w+)\s*=")  # Updated to match the loop variable
+    array_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|char|string)\s+(?P<variable_name>\w+)\[(?P<size>\d+)\]\s*=\s*\{.*?\};")
+    regular_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|char|string)\s+(?P<variable_name>\w+)\s*=\s*(?P<value>.*?);")
+    simple_declaration_pattern = re.compile(r"^\s*(?P<data_type>int|float|char|string)\s+(?P<variable_name>\w+)\s*;")
+    loop_variable_pattern = re.compile(r"for\s*\(\s*(?P<data_type>int|float|char|string)\s+(?P<variable_name>\w+)\s*=")  # Updated to match the loop variable
 
     for line in code.splitlines():
         # Check for array declarations
@@ -165,7 +133,7 @@ def generate_symbol_table(code):
     return symbol_table
 
 # Generate symbol table from the sample code
-symbol_table = generate_symbol_table(sample_code)
+symbol_table = generate_symbol_table(source_code)
 
 # Print the symbol table
 print("\nSymbol Table:\n")

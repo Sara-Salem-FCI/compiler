@@ -1,13 +1,18 @@
-begin {
-    int sum = 0;
-    sum = 7;
-    for i in [1, 2, 3, 4, 5] {
-        sum += i;
-        print(sum);
-    }
-    if (sum > 10) {
-        print("Sum is greater than 10");
-    } else {
-        print("Sum is not greater than 10");
-    }
+begin{
+
+int total = 0;
+for i in [7,9,3] {
+    print(i);
+}
+int j = 0;
+while (j < 5) {
+    j+=1;
+}
+if (total > 10) {
+    print("Total is greater than 10");
+} else {
+    print("Total is 10 or less");
+}
+
+return total;
 }end
