@@ -11,14 +11,17 @@ Statement -> Assignment
           | While 
           | For
 
-Declaration -> "keyword" Identifier ;
-             | "keyword" Identifier "=" value ";"
-             | "keyword" Identifier "=" Identifier ";"
+Declaration -> "DataType" Identifier ;
+             | "DataType" Identifier "=" value ";"
+             | "DataType" Identifier "=" Identifier ";"
+
+DataType -> "int" | "float" | "string"
 
 Assignment -> Identifier "=" NUMBER ";" 
             | Identifier "=" Expression ";" 
             | Identifier "=" Identifier ";"
-            | Identifier CompoundOperator Expression ";"
+            | Identifier CompoundOperator value ";"
+            | Identifier CompoundOperator Identifier ";"
 
 Conditional -> "if" "(" BooleanExpression ")" "{" StatementList "}" 
              ["elif" "(" BooleanExpression ")" "{" StatementList "}"]* 
@@ -36,9 +39,6 @@ While -> "while" "(" BooleanExpression ")" "{" StatementList "}"
 
 For -> "for" Identifier "in" TargetList "{" StatementList "}"
 
-Pass -> "pass" ";" 
-      | "noop" ";"
-
 Return -> "return" [ExpressionList] ";"
 
 LoopControl -> "break" ";" 
@@ -47,23 +47,14 @@ LoopControl -> "break" ";"
 Expression -> Term (Operator Term)*
 
 Term -> Identifier 
-     | Literal 
-     | "(" Expression ")"
-
-Literal -> NUMBER 
-        | STRING
+     | NUMBER
+     | STRING
 
 Operator -> "+" 
          | "-" 
          | "*" 
          | "/" 
          | "%" 
-         | "==" 
-         | "!=" 
-         | "<" 
-         | ">" 
-         | "<=" 
-         | ">=" 
          | "="
 
 RelationalOperator -> "==" | "!=" | "<" | ">" | "<=" | ">="

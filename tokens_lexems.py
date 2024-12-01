@@ -30,7 +30,7 @@ def is_identifier(string):
 
 KEYWORDS = {'if', 'print', 'in', 'else', 'for', 'while', 'return', 'int', 'float',
             'range', 'string', 'elif', 'pass', 'break', 'continue', 'True', 
-            'False', 'and', 'or', 'not', 'begin', 'end'}  # Added 'begin' and 'end'
+            'False', 'and', 'or', 'not', 'begin', 'end'} 
 
 def is_keyword(string):
     return string in KEYWORDS
