@@ -1,5 +1,6 @@
 from typing import List, Tuple
-from source_code_to_tokens_and_lexems import tokens
+from tokens_lexems import tokens
+
 class Parser:
     def __init__(self, tokens: List[Tuple[str, str]]):
         self.tokens = tokens
@@ -99,14 +100,14 @@ class Parser:
             self.match('CURLY_BRACKET')
             elif_body = self.parse_statement_list()
             self.match('CURLY_BRACKET')
-            elif_statements.append((elif_condition, elif_body))
+            elif_statements.append(ParseNode("ElifStatement", [elif_condition, elif_body]))
         else_body = None
         if self.current_token() and self.current_token()[1] == 'else':
             self.match('KEYWORD')  # 'else'
             self.match('CURLY_BRACKET')
             else_body = self.parse_statement_list()
             self.match('CURLY_BRACKET')
-        return ParseNode("Conditional", [condition, if_body, elif_statements, else_body])
+        return ParseNode("Conditional", [ParseNode("Condition", [condition]), ParseNode("IfBody", if_body)] + elif_statements + ([ParseNode("ElseBody", else_body)] if else_body else []))
 
     def parse_boolean_expression(self):
         expr = self.parse_expression()
@@ -141,7 +142,7 @@ class Parser:
         self.match('CURLY_BRACKET')
         body = self.parse_statement_list()
         self.match('CURLY_BRACKET')
-        return ParseNode("WhileLoop", [condition, body])
+        return ParseNode("WhileLoop", [ParseNode("Condition", [condition]), ParseNode("Body", body)])
 
     def parse_for(self):
         self.match('KEYWORD')  # 'for'
@@ -151,7 +152,7 @@ class Parser:
         self.match('CURLY_BRACKET')
         body = self.parse_statement_list()
         self.match('CURLY_BRACKET')
-        return ParseNode("ForLoop", [identifier, target_list, body])
+        return ParseNode("ForLoop", [identifier, target_list, ParseNode("Body", body)])
 
     def parse_pass(self):
         keyword = self.match('KEYWORD')  # 'pass' or 'noop'
@@ -224,12 +225,10 @@ class ParseNode:
 
     def __str__(self):
         return self.pretty_print()
+    
+#=================================================================
 
-# Example usage
 if __name__ == "__main__":
-    # Assuming you have already run your tokenizer and have the tokens
-    # Replace this with your actual tokens from the tokenizer
-
     parser = Parser(tokens)
     try:
         parse_tree = parser.parse()

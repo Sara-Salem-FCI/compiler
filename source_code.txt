@@ -1,5 +1,4 @@
 begin{
-
 int total = 0;
 for i in [7,9,3] {
     print(i);
@@ -13,6 +12,5 @@ if (total > 10) {
 } else {
     print("Total is 10 or less");
 }
-
 return total;
 }end

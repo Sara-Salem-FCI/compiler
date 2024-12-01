@@ -1,49 +1,38 @@
-sample_code = """
 begin{
-
     int sum =0;
     int counter = 0;
     while (counter < 3) {
         print(counter);
         counter += 1;
     }
-
     if (sum > 10) {
         print("Sum is greater than 10!");
     } else {
         print("Sum is less than or equal to 10.");
     }
-
     return initial;
 }end
-"""
 
 ----------------------------------------------------------------------
 
-sample_code = """
 begin{
     string message = "Hello, ";
     string name = "W";
     float f = 6.9;
     message += name;
     print(message);
-    int counter = 0;
-    
+    int counter = 0; 
     while (counter < 3) {
         print(counter);
         counter += 1;
     }
-
     return counter;
 }end
-"""
+
 ----------------------------------------------------------------------
 
-sample_code = """
 begin{
-
 int total = 0;
-
 for i in [7,9,3] {
     print(i);
 }
@@ -51,13 +40,10 @@ int j = 0;
 while (j < 5) {
     j+=1;
 }
-
 if (total > 10) {
     print("Total is greater than 10");
 } else {
     print("Total is 10 or less");
 }
-
 return total;
 }end
-"""
