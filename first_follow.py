@@ -75,7 +75,7 @@ for nt in non_terminals:
 
 print("Grammar Rules:")
 for rule in grammar:
-    print(f"{rule[0]} -> {rule[1]}")
+    print(f"{rule[0]} -> {rule[1]}")    
 
 print("\nFirst Sets:")
 for nt in non_terminals:
