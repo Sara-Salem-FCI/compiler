@@ -123,6 +123,7 @@ def print_symbol_table(symbol_table):
               f"{entry['Line Declaration']:<20}"
               f"{str(entry['References']):<20}"
               f"{entry['Value'] if entry['Value'] is not None else 'None'}")
+        print("-" * 120)
 
 #================================================================
 
